@@ -1,4 +1,6 @@
 const helpCommand = require("../commands/help.js")
+const vinDecodeCommand = require("../commands/vinDecode.js")
+
 function onMessage(client, config, message){
   if (message.author.bot) return
 
@@ -14,7 +16,6 @@ function onMessage(client, config, message){
 
   if (command === 'help') {
     helpCommand(config, message)
-
   }
 
 
@@ -30,6 +31,10 @@ function onMessage(client, config, message){
     .join(' ')
     .replace(/\@everyone/gi, 'everyone')
     .replace(/\@here/gi, 'here')
+
+    if(command === "vindecode"){
+      vinDecodeCommand(config, message, pureMsg)
+    }
 }
 
 module.exports = onMessage
